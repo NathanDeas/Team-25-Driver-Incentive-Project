@@ -1,0 +1,214 @@
+header {
+  color: #faf8f2;
+  background-color: #343b41;
+  text-align: center;
+  font-family: verdana;
+  position: fixed;
+  padding: 0;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border: 5px solid #faf8f2;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  box-shadow: 10px 10px 10px #343b41;
+  height: fit-content;
+  z-index: 1;
+}
+
+body {
+  margin-top: 150px;
+  color: black;
+  background-color: white;
+  text-align: center;
+  font-family: verdana;
+  /* background: url(blurred-motion-blue-abstract-background-with-lines_371174-1261.jpg) no-repeat center center fixed; */
+  background-size: cover;
+  background-color: #898f92;
+  min-height: 100%;
+}
+
+table,
+th,
+td {
+  color: #343b41;
+  /* border: 2px solid #faf8f2; */
+  border-collapse: collapse;
+  padding: 10px;
+  margin: auto;
+}
+table
+{
+  max-height: 300px !important;
+  overflow-y: scroll !important;
+}
+tr:nth-child(odd)
+{
+  background-color: #f9f9f9;
+}
+tr:nth-child(even)
+{
+  background-color: #e6e6e6;
+}
+#t-header
+{
+  background-color: #3b707a;
+  color: #faf8f2;
+  font-size: 18px;
+  padding: 20px;
+}
+th{
+  background-color: #3b707a;
+  color: #faf8f2;
+  padding: 20px;
+  font-size: 20px;
+}
+#about-table
+{
+  color: #343b41;
+  text-align: left;
+}
+#about-table th
+{
+  background-color: #3b707a;
+}
+.button {
+  background-color: #343b41;
+  color: #faf8f2;
+  border: 2px solid #faf8f2;
+  justify-self: center;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  font-size: 15px;
+  transition: 1s;
+}
+
+.button:hover, .login_button:hover{
+  background-color: #898f92;
+  color: white;
+  cursor: pointer;
+  transition: 1s;
+  box-shadow: 1px 1px 1px #898f92;
+}
+
+.message {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.form-bottom {
+  display: grid;
+}
+
+.edit-name {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  /*optional*/
+  /*font-family: arial, sans-serif;*/
+  font-family: verdana;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#login, 
+#create_account, 
+#add_sprint_entry, 
+#sprint_edit, 
+#homepage,
+#profile,
+#edit-profile,
+#apply,
+#create-account,
+#transactions,
+#applications,
+#sponsor-apps,
+#v-cat,
+#logs,
+#reports
+{
+  height: fit-content;
+  color: #faf8f2;
+  background-color: #343b41;
+  border: 5px solid #faf8f2;
+  padding: 20px 20px;
+  width: fit-content;
+  margin: auto;
+  box-shadow: 10px 10px 10px #343b41;
+  min-width: 400px;
+}
+#homepage
+{
+  width: auto !important;
+  height: auto !important;
+}
+#edit-profile tr
+{
+  color: black;
+}
+#edit-profile table
+{
+  margin: auto;
+}
+#add_sprint_entry label
+{
+  font-size: 20px;
+}
+.login_button
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 20px;
+  margin-top: 20px;
+  background-color: #343b41;
+  color: #faf8f2;
+  border: 2px solid #faf8f2;
+  font-size: 20px;
+}
+#footer
+{
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  background-color: #475058;
+  color: #faf8f2;
+  text-align: center;
+  border: 2px solid #faf8f2;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+#title
+{
+  color: #faf8f2;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: auto;
+  border: 5px solid #3b707a;
+  border-right: none;
+  border-left: none;
+  font-size: 40px;
+  padding: 10px;
+}
+#main-content
+{
+  padding-bottom: 50px;
+}
+#message
+{
+  background-color: white;
+  color: #475058;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  padding: 10px;
+  opacity: 50%;
+}

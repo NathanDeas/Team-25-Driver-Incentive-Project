@@ -1,0 +1,102 @@
+SQL commands to recreate database
+
+CREATE DATABASE team_25_database;
+
+CREATE TABLE `team_25_database`.`about` (
+  `version` INT NOT NULL,
+  `team_num` INT NOT NULL,
+  `release_date` VARCHAR(11) NULL DEFAULT NULL,
+  `product_name` VARCHAR(50) NULL DEFAULT NULL,
+  `product_description` VARCHAR(150) NOT NULL,
+  PRIMARY KEY (`version`));
+
+CREATE TABLE `team_25_database`.`applications` (
+  `appID` INT NOT NULL AUTO_INCREMENT,
+  `driver_id` INT NULL DEFAULT NULL,
+  `organization_id` VARCHAR(255) NULL DEFAULT NULL,
+  `status` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`appID`));
+
+CREATE TABLE `team_25_database`.`delete_users` (
+  `deleteID` INT NOT NULL AUTO_INCREMENT,
+  `userID` INT NULL DEFAULT NULL,
+  `user_type` VARCHAR(45) NULL DEFAULT NULL,
+  `username` VARCHAR(45) NULL DEFAULT NULL,
+  `fullname` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`deleteID`));
+
+delimiter $$
+CREATE TABLE `team_25_database`.`log` (
+  `audit_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `message` varchar(1000) DEFAULT NULL,
+  `dt_stamp` datetime DEFAULT convert_tz(current_timestamp(),'UTC','US/Eastern'),
+  `audit_type` int(11) NOT NULL,
+  `superior_id` int(11) DEFAULT NULL,
+  UNIQUE KEY `audit_id` (`audit_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=879 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci$$
+
+delimiter $$
+CREATE TABLE `team_25_database`.`orders` (
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `total_points` int(11) NOT NULL,
+  `dt_stamp` date NOT NULL DEFAULT curdate(),
+  PRIMARY KEY (`order_id`),
+  UNIQUE KEY `order_id` (`order_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci$$
+
+CREATE TABLE `team_25_database`.`organizations` (
+  `orgID` INT NOT NULL AUTO_INCREMENT,
+  `org_name` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`orgID`));
+
+CREATE TABLE `team_25_database`.`org_catalogs` (
+  `org_id` INT NULL DEFAULT NULL,
+  `cat_name` VARCHAR(255) NULL DEFAULT NULL,
+  `country` VARCHAR(255) NULL DEFAULT NULL,
+  `sf_mt` VARCHAR(255) NULL DEFAULT NULL,
+  `sf_re` VARCHAR(255) NULL DEFAULT NULL,
+  `se_mt` VARCHAR(255) NULL DEFAULT NULL,
+  `se_re` VARCHAR(255) NULL DEFAULT NULL,
+  `active` TINYINT(1) NULL DEFAULT NULL);
+
+delimiter $$
+CREATE TABLE `team_25_database`.`transactions` (
+  `transaction_id` int(11) NOT NULL AUTO_INCREMENT,
+  `driver_id` int(11) NOT NULL,
+  `trans_date` timestamp NULL DEFAULT convert_tz(current_timestamp(),'UTC','US/Eastern'),
+  `action` varchar(255) DEFAULT NULL,
+  `amount` varchar(255) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `orgID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`transaction_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci$$
+
+CREATE TABLE `team_25_database`.`user_org` (
+  `user_org_id` INT NOT NULL AUTO_INCREMENT,
+  `userID` INT NOT NULL,
+  `orgID` INT NOT NULL,
+  `point_total` INT NULL DEFAULT NULL,
+  `active_cat` TINYINT(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`user_org_id`),
+  INDEX `orgID_idx` (`orgID` ASC) VISIBLE,
+  INDEX `userID_idx` (`userID` ASC) VISIBLE,
+  CONSTRAINT `orgID`
+    FOREIGN KEY (`orgID`)
+    REFERENCES `team_25_database`.`organizations` (`orgID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `userID`
+    FOREIGN KEY (`userID`)
+    REFERENCES `team_25_database`.`users` (`userID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `team_25_database`.`users` (
+  `userID` INT NOT NULL AUTO_INCREMENT,
+  `user_type` VARCHAR(50) NULL DEFAULT NULL,
+  `username` VARCHAR(50) NULL DEFAULT NULL,
+  `hashed_password` VARCHAR(255) NULL DEFAULT NULL,
+  `fullname` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`userID`));
